@@ -1,0 +1,33 @@
+<div class="outerdiv">
+  <div class="container" fxFlex fxLayout="column" fxLayoutAlign="center center">
+
+    <div fxFlex style="width :350px;height:550px" fxFlex fxLayout="column" fxLayoutAlign="center center">
+        <form novalidate #loginForm="ngForm" (ngSubmit)=" getData();"  >
+      <mat-card fxLayout="column" fxLayoutAlign="center center">
+
+        <mat-card-content>
+          <div fxFlex fxLayout="column" fxFlexOffset="20px" class="form-size" fxLayoutAlign="center center">
+            <img mat-card-image src="../../assets/images/loginheader.png" alt="login">
+            
+              <mat-form-field>
+                <input matInput placeholder="Email" type="text" [(ngModel)]="user.email" name="username" #email="ngModel"
+                  required>
+                  <mat-error *ngIf="email.errors?.required">Email is required</mat-error>
+              </mat-form-field>
+              <mat-form-field>
+                <input matInput placeholder="Password" type="password" [(ngModel)]="user.password" name="password"
+                  #password="ngModel" required>
+                  <mat-error *ngIf="password.errors?.required">Password is required</mat-error>
+              </mat-form-field>
+              <!-- <button type="submit" mat-button class="background-primary text-floral-white">Login</button> -->
+          </div>
+        </mat-card-content>
+        <mat-card-actions>
+          <p><button type="submit" mat-button class="background-primary text-floral-white" [disabled]="loginForm.form.invalid" >Login</button></p>
+          <p><button type="button" mat-button class="background-primary text-floral-white" [disabled]="loginForm.form.invalid" (click)="sendData()">Signup</button></p>
+        </mat-card-actions>
+      </mat-card>
+    </form>
+    </div>
+  </div>
+</div>

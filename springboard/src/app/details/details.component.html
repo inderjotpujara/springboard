@@ -1,0 +1,76 @@
+<div class="cards" fxLayoutGap="10 px">
+
+  <mat-card class="a">
+
+    <mat-card-content>
+
+      <p class="btn">let say today is tuesday (will implement date picker soon) </p>
+      <div class="innerdiv">
+        <div class="form-group" class="btn">
+          <label for="startTime">Time Slots</label>
+            <input class="form-control"id="startTime" required [(ngModel)]="startTime" name="startTime"type="time" [value]="slot">{{slot}}
+        </div>
+
+        <div class="form-group" class="btn">
+          <label for="slotGap">Time Interval </label>
+          <select class="form-control" id="slotGap" required [(ngModel)]="slotGap" name="slotGap">
+            <option *ngFor="let gap of slotGaps" [value]="gap">{{gap}} </option>
+          </select>
+        </div>
+      </div>
+
+      <button type="submit" mat-button class="background-primary text-floral-white chkBtn" (click)=roomAvailability()>Check</button>
+
+    </mat-card-content>
+  </mat-card>
+
+  <mat-card class="b">
+    <div fxFlex *ngFor="let availables of  arrayOfAvailableSlots">
+      <mat-card class="flexible">
+        <mat-card-content>
+          <p><b>{{availables}}</b></p>
+        </mat-card-content>
+        <mat-card-actions>
+          <p><button type="submit" mat-button (click)="bookRoom(availables)">Book</button></p>
+        </mat-card-actions>
+      </mat-card>
+    </div>
+  </mat-card>
+</div>
+<div class="abc">
+  <div class="card" style="display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;">
+    <div *ngFor="let slot of arrayOfAllSlots" class="c">
+      <div class="mat-card">
+        <p >{{slot}}</p>
+      </div>
+    </div>
+    <div *ngFor="let status of statusOfAllSlots" class="d">
+      <mat-card>
+        <p>{{status}}</p>
+      </mat-card>
+    </div>
+  </div>
+</div>
+
+<!-- <mat-grid-list cols="3" rowHeight="48px">
+    <mat-grid-tile *ngFor="let slot of arrayOfAllSlots">
+        <div class="flexc">
+                {{slot}}
+        </div>
+    </mat-grid-tile>
+    <mat-grid-tile  *ngFor="let status of statusOfAllSlots">
+        <div class="flexc">
+                {{status}}
+        </div>
+    </mat-grid-tile>
+</mat-grid-list> -->
+<!-- <div class="cards">
+  <table mat-table>
+    <ng-container matColumnDef="position" *ngFor="let slot of arrayOfAllSlots" *ngFor="let status of statusOfAllSlots">
+      <th mat-header-cell class="heading"> {{slot}}</th>
+      <td mat-cell > {{status}} </td>
+    </ng-container>
+
+    </table>
+</div> -->
